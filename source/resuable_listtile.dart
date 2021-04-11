@@ -35,6 +35,7 @@ class ListTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: Icon(Icons.person),
+      
       // 텍스트(내용) 입력 대신 title 
       title: Text(
         title,
