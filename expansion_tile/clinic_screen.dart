@@ -13,26 +13,109 @@ class ClinicScreen extends StatelessWidget {
       body: ListView(
         physics: BouncingScrollPhysics(),
         children: [
-          ListTileWidget(title: '신장내과', colour: Colors.black),
-          ListTileWidget(title: '정형외과', colour: Colors.black),
-          ListTileWidget(title: '소화기내과', colour: Colors.black),
-          ListTileWidget(title: '신경외과', colour: Colors.blue),
-          ListTileWidget(
-            title: '심장내과',
-            colour: Colors.red,
-          ),
           ExpansionTile(
-            leading: Icon(Icons.person),
-            title: Text('류마티스내과'),
+            leading: Icon(Icons.group_add),
+  //          key: PageStorageKey(title),
+            title: Text(
+              '신장내과',
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
             children: [
-              ListTile(
-                title: Text('test1'),
+              ListTileWidget(title: 'test1'),
+              ListTileWidget(
+                title: ('test2'),
               ),
-              ListTile(
-                title: Text('test2'),
+              ListTileWidget(
+                title: '김소미   9100',
+                colour: Colors.teal,
               ),
             ],
-          )
+          ),
+          ExpansionTile(
+            leading: Icon(Icons.group_add),
+            title: Text(
+              '정형외과',
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
+            children: [
+              ListTileWidget(title: 'test1'),
+              ListTileWidget(
+                title: ('test2'),
+              ),
+              ListTileWidget(
+                title: '김소미   9100',
+                colour: Colors.teal,
+              ),
+            ],
+          ),
+          ExpansionTile(
+            leading: Icon(Icons.group_add),
+            title: Text(
+              '소화기내과',
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
+            children: [
+              ListTileWidget(title: 'test1'),
+              ListTileWidget(
+                title: ('test2'),
+              ),
+              ListTileWidget(
+                title: '김소미   9100',
+                colour: Colors.teal,
+              ),
+            ],
+          ),
+          ExpansionTile(
+            leading: Icon(Icons.group_add),
+            title: Text(
+              '신경외과',
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
+            children: [
+              ListTileWidget(title: 'test1'),
+              ListTileWidget(
+                title: ('test2'),
+              ),
+              ListTileWidget(
+                title: '김소미   9100',
+                colour: Colors.teal,
+              ),
+            ],
+          ),
+          ExpansionTile(
+            leading: Icon(Icons.group_add),
+            title: Text(
+              '심장내과',
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
+            children: [
+              ListTileWidget(title: 'test1'),
+              ListTileWidget(
+                title: ('test2'),
+              ),
+              ListTileWidget(
+                title: '김소미   9100',
+                colour: Colors.teal,
+              ),
+            ],
+          ),
+          ExpansionTile(
+            leading: Icon(Icons.group_add),
+            title: Text(
+              '류마티스내과',
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
+            children: [
+              ListTileWidget(title: 'test1'),
+              ListTileWidget(
+                title: ('test2'),
+              ),
+              ListTileWidget(
+                title: '김소미   9100',
+                colour: Colors.teal,
+              ),
+            ],
+          ),
         ],
       ),
     );
