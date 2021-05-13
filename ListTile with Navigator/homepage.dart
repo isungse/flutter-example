@@ -1,153 +1,90 @@
 import 'package:flutter/material.dart';
-import 'package:phone_book_flutter/pages/tempscreen1.dart';
-import 'package:phone_book_flutter/pages/tempscreen2.dart';
-import 'package:phone_book_flutter/pages/tempscreen3.dart';
-import 'package:phone_book_flutter/screens/dept_screen0.dart';
-import './screens/depthome.dart';
 
-class HomePage extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomeState createState() => _HomeState();
 }
 
-class _HomePageState extends State<HomePage> {
-  int currentTab = 0;
-
-  final List<Widget> screens = [
-    DeptHome(),
-//  DeptScreen(),
-    TempScreen1(),
-    TempScreen2(),
-    TempScreen3(),
+class _HomeState extends State<Home> {
+  final List<String> listof = [
+    "Apple",
+    "Food",
+    "Product",
+    "Item",
+    "List View",
+    "New App",
+    "Design",
+    "Job"
   ];
-
-  final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = DeptHome();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageStorage(
-        child: currentScreen,
-        bucket: bucket,
+      appBar: AppBar(
+        title: Text('List View Builder'),
+        backgroundColor: Colors.deepPurple,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                debugPrint("Add");
+              }),
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                debugPrint("Search");
+              })
+        ],
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          height: 60,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                child: Center(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      MaterialButton(
-                        onPressed: () {
-                          setState(
-                            () {
-                              currentScreen = DeptHome();
-                              currentTab = 0;
-                            },
-                          );
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.home,
-                              color: currentTab == 0 ? Colors.red : Colors.grey,
-                            ),
-                            Text(
-                              'Home',
-                              style: TextStyle(
-                                color: currentTab == 0 ? Colors.black : Colors.grey,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          setState(
-                                () {
-                              currentScreen = TempScreen1();
-                              currentTab = 1;
-                            },
-                          );
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.event_note,
-                              color: currentTab == 1 ? Colors.red : Colors.grey,
-                            ),
-                            Text(
-                              '식단표',
-                              style: TextStyle(
-                                color: currentTab == 1 ? Colors.black : Colors.grey,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          setState(
-                                () {
-                              currentScreen = TempScreen2();
-                              currentTab = 2;
-                            },
-                          );
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.warning,
-                              color: currentTab == 2 ? Colors.blue : Colors.grey,
-                            ),
-                            Text(
-                              '식단표2',
-                              style: TextStyle(
-                                color: currentTab == 2 ? Colors.black : Colors.grey,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      MaterialButton(
-                        onPressed: () {
-                          setState(
-                                () {
-                              currentScreen = TempScreen3();
-                              currentTab = 3;
-                            },
-                          );
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.warning,
-                              color: currentTab == 3 ? Colors.blue : Colors.grey,
-                            ),
-                            Text(
-                              'Ready3',
-                              style: TextStyle(
-                                color: currentTab == 3 ? Colors.black : Colors.grey,
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
+      body: Container(
+        child: ListView.builder(
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (_, int index) => listDataItem(
+            this.listof[index],
           ),
+          itemCount: this.listof.length,
+        ),
+
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        backgroundColor: Colors.blueAccent,
+        foregroundColor: Colors.white,
+        onPressed: (){
+          debugPrint("FB Button Click");
+        },
+      ),
+    );
+  }
+}
+
+class listDataItem extends StatelessWidget {
+  String itemName;
+  listDataItem(this.itemName);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+
+      elevation: 7.0,
+
+      child: Container(
+        margin: EdgeInsets.all(7.0),
+        padding: EdgeInsets.all(6.0),
+
+        child: Row(
+          children: <Widget>[
+            CircleAvatar(
+              child: Text(itemName[0]),
+              backgroundColor: Colors.deepPurple,
+              foregroundColor: Colors.white,
+            ),
+            Padding(padding: EdgeInsets.all(8.0)),
+            Text(
+              itemName,
+              style: TextStyle(fontSize: 20.0),
+            )
+          ],
         ),
       ),
     );
